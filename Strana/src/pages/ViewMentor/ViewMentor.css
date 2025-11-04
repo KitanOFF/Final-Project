@@ -1,0 +1,391 @@
+.sidebar-viewmentor {
+  width: 250px;
+  height: 100vh;
+  background-color: #ffffff79;
+  display: flex;
+  flex-direction: column;
+  
+  border-right: 1px solid #f1f1f1;
+  padding: 20px 10px;
+}
+.sidebar-header-viewmentor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.collapse-btn-viewmentor {
+  background-color: #eef0ff;
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  color: #6a63ff;
+  display: flex;
+  top: 35px;
+  right: 35px;
+  position: relative;
+
+}
+.sidebar-menu-viewmentor  {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+  margin-bottom: 400px;
+}
+/*           -viewmentor           */
+.menu-item-viewmentor {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #5f6b7d;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.menu-item-viewmentor:hover {
+  background-color: #f2f4ff;
+}
+
+.menu-item-viewmentor.active {
+  background-color: #f2f4ff;
+  color: #6a63ff;
+  font-weight: 500;
+  border-right: 3px solid #6a63ff;
+}
+
+.menu-icon-viewmentor {
+  font-size: 18px;
+}
+.sidebar-footer-viewmentor {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6a63ff;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.sidebar-footer-viewmentor:hover {
+  opacity: 0.8;
+}
+/* src  bar */
+.header-container-viewmentor {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f0f0f3;
+  padding: 36px 32px;
+}
+
+.search-wrapper-viewmentor {
+  flex: 1;
+}
+
+.search-input-viewmentor {
+  width: 420px;
+  padding: 10px 30px;
+  border-radius: 22px;
+  border: none;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  margin-left: 100px;
+}
+
+.company-profile-viewmentor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 150px;
+}
+
+.company-logo-viewmentor {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.company-text-viewmentor {
+  color: #626e89;
+  font-size: 16px;
+  font-weight: 500;
+}
+/* dddddddd */
+.Main-Container-viewmentor{
+  background-color: #f6f6fa;
+  display: flex;
+}
+.Mentor-Container-viewmentor{
+  width: 100%;
+  background-color: #f0f0f3;;
+  
+}
+/* cards */
+.mentor-top-row-viewmentor{
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  width: 100%;
+  padding-top: 1px;
+  /* ove e mala karticka  */
+  margin-left: 124px;
+}
+
+.mentor-card-viewmentor {
+  height: 250px;
+  border-radius: 21px;
+  background: #fafaff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  flex-direction: column;
+  opacity: 1;
+}
+
+.small-card-viewmentor {
+  width: 233px;
+  align-items: center;
+  padding: 24px;
+  justify-content: center;
+}
+
+.profile-image-viewmentor {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.mentor-info-viewmentor {
+  text-align: left;
+}
+
+.mentor-name-viewmentor {
+  font-size: 22px;
+  margin-bottom: 2px;
+}
+
+.mentor-role-viewmentor {
+  font-size: 16px;
+  color: #6397e9;
+  margin-bottom: 4px;
+}
+
+.mentor-contact-viewmentor span {
+  display: block;
+  font-size: 14px;
+  color: #888;
+}
+
+.large-card-viewmentor {
+  width: 767px;
+  padding: 24px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.large-card-header-viewmentor {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.mentor-about-viewmentor .about-title-viewmentor {
+  color: #6397e9;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.mentor-about-viewmentor .about-skills-viewmentor {
+  display: block;
+  margin: 8px 0;
+  font-size: 16px;
+}
+
+.about-description-viewmentor {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  max-width: 95%;
+}
+
+.offer-btn-viewmentor {
+  padding: 10px 24px;
+  background: #6397e9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+/* jobsss */
+.assigned-jobs-mentor-viewmentor {
+  max-width: 500px;
+  font-family: Arial, sans-serif;
+  border-radius: 16px;
+  padding: 2px 28px;
+  margin: 0;
+  margin-left: 30px;
+}
+
+.tabs-mentor-viewmentor {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  
+}
+
+.tab-button-viewmentor {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #8b8baf;
+  font-weight: 500;
+  padding: 2px 6px;
+  border-bottom: 2px solid transparent;
+  font-size: 15px;
+  transition: color 0.3s, border-bottom 0.3s;
+}
+
+.tab-button-viewmentor.active {
+  border-bottom: 2px solid #6a63ff;
+  color: #6a63ff;
+  font-weight: 600;
+}
+
+.job-list-mentor-viewmentor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  
+}
+
+.job-card-mentor-viewmentor {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 46px;
+  background: #fff;
+  border-radius: 9px;
+  box-shadow: 0 1px 3px rgba(66,78,146,0.05);
+  font-size: 15px;
+  min-height: 34px;
+}
+
+.job-title-mentor-viewmentor {
+  color: #434a65;
+  font-weight: 500;
+  font-size: 15px;
+  max-width: 70%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.job-status-mentor-viewmentor {
+  font-weight: 600;
+  padding: 3px 18px;
+  border-radius: 100px;
+  font-size: 13px;
+  white-space: nowrap;
+  box-shadow: none;
+  margin-left: 14px;
+  letter-spacing: 0.02em;
+}
+
+.status-done-viewmentor {
+  color: #3dcd58;
+  background: #eafbe8;
+}
+
+.status-rejected-viewmentor {
+  color: #f05e77;
+  background: #fae4eb;
+}
+
+.status-in-progress-viewmentor {
+  color: #505ab2;
+  background: #e8eafd;
+} 
+/* job ofers */
+/* PendingOffers.css */
+.pending-job-offers-container {
+  max-width: 500px;
+  margin: 40px auto;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f8f9fa;
+  padding: 30px 20px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+.pending-job-offers-container h2 {
+  margin-bottom: 24px;
+  color: #323643;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.offer-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 18px 22px;
+  margin-bottom: 17px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(50,54,67,0.07);
+}
+
+.offer-title {
+  font-size: 1rem;
+  color: #323643;
+}
+
+.cancel-offer-btn {
+  border: 1.5px solid #e60073;
+  background: #fff;
+  color: #e60073;
+  padding: 8px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cancel-offer-btn:hover {
+  background: #e60073;
+  color: #fff;
+}
+/* fox */
+.jobs-offers-row-viewmentor {
+  display: flex;
+  
+ 
+
+}
+
+.assigned-jobs-mentor-viewmentor {
+  flex: 1.2;
+ 
+}
+
+.pending-job-offers-container {
+  flex: 1;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+  
+
+  height: fit-content;
+}

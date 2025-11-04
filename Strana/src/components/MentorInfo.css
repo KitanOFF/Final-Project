@@ -1,0 +1,122 @@
+.mentor-profile-row-mentinf {
+  display: flex;
+  gap: 38px;
+  margin: 28px 0;
+  justify-content: flex-start;
+}
+
+/* LEFT CARD */
+ .mentor-profile-card-mentinf {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 14px rgba(66,78,146,0.06);
+  width: 235px;
+  min-width: 210px;
+  padding: 32px 24px 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mentor-avatar-mentinf {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 12px;
+}
+
+.mentor-profile-name-mentinf {
+  font-size: 23px;
+  color: #626e89;
+  font-weight: 600;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.mentor-profile-title-mentinf {
+  color: #6a63ff;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.mentor-profile-contact-mentinf {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.mentor-profile-contact-row-mentinf {
+  color: #8d97b5;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+/* RIGHT CARD */
+
+.mentor-info-card-mentinf {
+  flex: 1;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 14px rgba(66,78,146,0.06);
+  padding: 30px 38px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+
+.mentor-info-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.mentor-info-title {
+  color: #6a63ff;
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.mentor-info-skills {
+  color: #222;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.mentor-info-btn {
+  background: #6a63ff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 25px;
+  cursor: pointer;
+  margin-left: 18px;
+  margin-top: 2px;
+  transition: background 0.18s;
+}
+
+.mentor-info-btn:hover {
+  background: #5242bb;
+}
+
+.mentor-info-text {
+  color: #787b8f;
+  font-size: 14px;
+  line-height: 1.67;
+  margin-top: 8px;
+  margin-bottom: 7px;
+} 

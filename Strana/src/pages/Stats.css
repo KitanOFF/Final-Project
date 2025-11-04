@@ -1,0 +1,45 @@
+.main-left-side{
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+    padding: 30px 20px;
+    font-size: 18px;
+    background-color: white;
+    margin: 5px;
+    border-radius: 5px;
+}
+.mentor-token-icon{
+    display: flex;
+    align-items: center;
+}
+.list-pages{
+    margin-top: 20px;
+}
+.list-pages-links li{
+    list-style: none;
+    padding: 10px;
+    cursor: pointer;
+}
+.list-pages-links li:hover{
+    background-color: #b3b4f7;
+    border-radius: 5px;
+    color: #3b3ee6;
+}
+.logout .left-side-button{
+    background: none;
+    color: #a4a5f8;
+}
+.logout{
+    display: flex;
+    padding-left: 40px;
+    padding-top: 565px;
+}
+.list-dashboard{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.Main-Container{
+    display: flex;
+    gap: 20px;
+}

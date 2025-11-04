@@ -1,0 +1,386 @@
+.left-side{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+   width: 40%;
+   
+   color: white;
+}
+
+.left-side-mentor-token{
+  padding-left: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+}
+
+.mentor-token-flex{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.mentor-token-flex span{
+  font-size: 22px;
+}
+
+.left-side-text{
+  font-size: 25px;
+  padding: 70px 60px;
+}
+
+.left-side-mentor-token p{
+  margin: 0;
+  padding-bottom: 70px;
+}
+
+.left-side-text h1{
+  margin: 0;
+  font-size: 70px;
+}
+
+.rocket-img{
+  position: absolute;
+  left: 130px;
+  top: 45px;
+  pointer-events: none;
+}
+
+span{
+  color: white;
+}
+
+.signup{
+  display: flex;
+}
+
+/* desen */
+.signup-signup {
+  display: flex;
+  min-height: 100vh;
+  align-items: flex-start;
+  justify-content: flex-end;
+  background: transparent;
+}
+
+.right-side-signup {
+  margin-top: 32px;
+  width: 528px;
+  min-height: 720px;
+ 
+  border-radius: 24px;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 42px 30px 36px 30px;
+  margin-right: 48px;
+}
+
+.mentor-logo-title-signup img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 22px;
+}
+
+.choose-title-signup {
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: #41465e;
+  margin: 0 0 32px 0;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.account-type-toggle-signup {
+  width: 528px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 4px;
+  background: #f7f7fd;
+  margin-bottom: 28px;
+}
+
+.account-type-toggle-signup button {
+  width: 264px;
+  height: 38px;
+  background: #edeffe;
+  border: none;
+  color: #6c7a99;
+  font-weight: 500;
+  font-size: 1.1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  margin: 0 2px;
+  transition: background 0.17s, color 0.17s;
+}
+
+.account-type-toggle-signup .active-signup {
+  background: #717aff;
+  color: #fff;
+}
+
+.signup-form-signup {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.input-label-signup {
+  color: #536080;
+  font-size: 1.1rem;
+  margin-bottom: 3px;
+}
+
+.input-email-signup,
+.input-password-signup {
+  width: 521px;
+  height: 60px;
+  border-radius: 9px;
+  border: 2px solid #d9dbef;
+  font-size: 1.07rem;
+  padding: 0 16px;
+  background: #f8f8fe;
+  margin-bottom: 4px;
+  outline: none;
+  transition: border 0.16s;
+}
+
+.input-email-signup:focus,
+.input-password-signup:focus {
+  border: 2px solid #717aff;
+}
+
+.password-rules-signup {
+  list-style: none;
+  color: #9297ab;
+  font-size: 0.99rem;
+  margin: 6px 0 11px 10px;
+  padding-left: 0;
+}
+
+.password-rules-signup li {
+  margin-bottom: 2.5px;
+}
+
+.continue-btn-signup {
+  width: 528px;
+  height: 58px;
+  background: #e0e6ff;
+  border-radius: 9px;
+  font-size: 1.18rem;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  margin-top: 16px;
+  cursor: pointer;
+  transition: background 0.18s;
+  opacity: 1;
+}
+
+/* .continue-btn-signup:hover {
+  background: #8d97fa;
+} */
+
+.login-link-signup {
+  margin-top: 28px;
+  text-align: center;
+  font-size: 1.08rem;
+  color: #7782a5;
+}
+
+.login-link-signup a {
+  color: #717aff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* .login-link-signup a:hover {
+  text-decoration: underline;
+} */
+
+/* BTTON REGISTER */
+/* go stavis css od login button */
+/* --------------------- */
+/* --------------------- */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+.signup-root {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.signup-hero {
+  background: linear-gradient(135deg,#8b8afd 0%,#6400ff 100%);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top-left-radius: 38px;
+  border-bottom-left-radius: 38px;
+  min-width: 320px;
+}
+
+.signup-hero-img {
+  max-width: 97%;
+  max-height: 92vh;
+  border-radius: 32px 0 0 32px;
+  object-fit: cover;
+}
+
+.mentor-signup-form.modern-signup {
+  flex: 1.25;
+  background: #fff;
+  border-radius: 0 38px 38px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.form-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mentor-logo-title {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-upload-circle {
+  width: 110px;
+  height: 110px;
+  border: 2px solid #c3c9e9;
+  border-radius: 50%;
+  background: #fafbfc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-upload-circle img {
+  width: 54px;
+  height: 54px;
+  opacity: 0.66;
+  object-fit: contain;
+}
+
+.paragraph-above-form h3 {
+  text-align: center;
+  color: #475168;
+  font-weight: 700;
+  font-size: 2.1rem;
+  margin: 8px 0 32px 0;
+  letter-spacing: .04em;
+}
+
+.right-side-inputs {
+  width: 100%;
+  max-width: 410px;
+  display: flex;
+  flex-direction: column;
+  gap: 23px;
+}
+
+.right-side-inputs label {
+  color: #747f9e;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 7px;
+}
+
+.right-side-inputs input[type="text"] {
+  width: 100%;
+  padding: 17px 16px;
+  font-size: 17px;
+  border: 2px solid #c3c9e9;
+  border-radius: 12px;
+  background: #f8faff;
+  margin-bottom: 4px;
+  transition: border 0.2s;
+}
+
+.right-side-inputs input:focus {
+  outline: none;
+  border-color: #7367f0;
+  background: #fff;
+}
+
+.register-btn {
+  margin-top: 24px;
+  background: #7367f0;
+  color: #fff;
+  padding: 22px 0;
+  border-radius: 12px;
+  border: none;
+  font-size: 21px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.18s;
+}
+.register-btn:hover {
+  background: #5141ac;
+}
+
+.terms-note {
+  margin-top: 18px;
+  font-size: 13px;
+  text-align: center;
+  color: #b9bace;
+}
+
+.terms-note a {
+  color: #7367f0;
+  text-decoration: underline;
+}
+
+.logo-upload-circle {
+  width: 99px;
+  height: 99px;
+  background: #f4f5fa;
+  border: 2px solid #ccccff;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto 8px auto;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.logo-upload-input {
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.startup-logo {
+  max-width: 70px;
+  max-height: 70px;
+  object-fit: contain;
+}
+
+.camera-icon {
+  font-size: 32px;
+  color: #7b6ef6;
+}

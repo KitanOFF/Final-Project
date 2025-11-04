@@ -1,0 +1,104 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+body {
+  overflow-x: hidden;
+}
+
+.NavBar-main {
+  width: 100%;
+  max-width: 100%;
+  padding: 32px 100px;
+  box-sizing: border-box;
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  height: 80px;
+  padding: 32px 64px;
+box-sizing: border-box;
+flex-grow: inherit;
+
+}
+
+.NavBar-main {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+
+.ul-ro {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem; 
+  align-items: center;
+  font-size: 23px;
+  margin-left: 370px;
+  margin-right: 30px;
+}
+.textDecoration{
+    text-decoration: none;
+     display: flex;
+    
+}
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-left: auto;  
+  padding-right: 32px;  
+}
+
+
+.ButtonStart {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background-color: #6a67f3;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.ButtonStart:hover {
+  background: #696cff;
+  transform: scale(1.05);
+  box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+/* LOGIN BUTON __________---*/
+.login-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #1a1a1a;
+  cursor: pointer;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+text-decoration: none;
+}
+
+.login-btn:hover {
+  transform: translateY(-2px);
+}
+/* LOGIN BUTON ^^^^^^^^^^*/

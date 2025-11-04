@@ -1,0 +1,9 @@
+.sidebar-footerR{
+    position: absolute;
+  bottom: 15px;
+  cursor: pointer;
+   display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}

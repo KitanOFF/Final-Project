@@ -1,0 +1,133 @@
+.sidebar-mystats {
+  width: 250px;
+  height: 100vh;
+  background-color: #ffffff79;
+  display: flex;
+  flex-direction: column;
+  
+  border-right: 1px solid #f1f1f1;
+  padding: 20px 10px;
+}
+.sidebar-header-mystats{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.collapse-btn-mystats {
+  background-color: #eef0ff;
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  color: #6a63ff;
+  display: flex;
+  top: 35px;
+  right: 35px;
+  position: relative;
+
+}
+.sidebar-menu-mystats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+  margin-bottom: 400px;
+}
+/*           -mystats           */
+.menu-item-mystats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #5f6b7d;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.menu-item-mystats:hover {
+  background-color: #f2f4ff;
+}
+
+.menu-item-mystats.active {
+  background-color: #f2f4ff;
+  color: #6a63ff;
+  font-weight: 500;
+  border-right: 3px solid #6a63ff;
+}
+
+.menu-icon-mystats {
+  font-size: 18px;
+}
+.sidebar-footer-mystats {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6a63ff;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.sidebar-footer-mystats:hover {
+  opacity: 0.8;
+}
+/* src bar */
+.header-container-mystats {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f0f0f3;
+  padding: 36px 32px;
+}
+
+.search-wrapper-mystats {
+  flex: 1;
+}
+
+.search-input-mystats {
+  width: 420px;
+  padding: 10px 30px;
+  border-radius: 22px;
+  border: none;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  margin-left: 100px;
+}
+
+.company-profile-mystats {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 150px;
+}
+
+.company-logo-mystats {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.company-text-mystats {
+  color: #626e89;
+  font-size: 16px;
+  font-weight: 500;
+}
+/* dddddddd */
+.Main-Container-mystats{
+  background-color: #f6f6fa;
+  display: flex;
+}
+.Mentor-Container-mystats{
+  width: 100%;
+  background-color: #f0f0f3;;
+  
+}
+/* src */
+
+/* stats */

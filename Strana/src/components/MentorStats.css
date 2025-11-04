@@ -1,0 +1,165 @@
+.mentor-stats-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 22px;
+}
+
+.mentor-profile-card {
+  width: 260px;
+  margin-left: 40px;
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 2px 12px rgba(66, 78, 146, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 28px 18px 20px 18px;
+  margin-right: 36px;
+  position: relative;
+  
+}
+
+.mentor-profile-avatar-wrapper {
+  position: relative;
+  margin-bottom: 16px;
+  
+}
+
+.mentor-profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #e4e4fa;
+}
+
+.mentor-avatar-check {
+  position: absolute;
+  bottom: 7px;
+  right: 5px;
+  background: #43c276;
+  color: #fff;
+  font-size: 1.15rem;
+  border-radius: 50%;
+  padding: 2px 6px;
+  border: 2px solid #fff;
+}
+
+.mentor-profile-name {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 2px;
+  color: #312f5d;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.profile-linkedin-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.mentor-profile-role {
+  font-size: 1.06rem;
+  color: #6771d0;
+  margin-bottom: 10px;
+}
+
+.mentor-profile-contact {
+  width: 100%;
+  margin-top: 12px;
+  color: #7c7d93;
+  font-size: 0.99rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mentor-profile-contact .icon {
+  width: 15px;
+  height: 15px;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.mentor-info-card-mentinf {
+  width: 767px;
+  min-height: 280px;
+  background: #fff;
+  border-radius: 21px;
+  box-shadow: 0 2px 12px rgba(66, 78, 146, 0.06);
+  padding: 28px 28px 22px 28px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.mentor-info-edit-btn {
+  position: absolute;
+  top: 22px;
+  right: 30px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.mentor-info-edit-btn img {
+  width: 28px;
+  height: 28px;
+}
+
+.mentor-info-title-row {
+  margin-bottom: 10px;
+}
+
+.mentor-info-title {
+  font-size: 1.1rem;
+  color: #6566ff;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.mentor-info-skills {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 14px;
+  color: #23294b;
+}
+
+.mentor-info-text {
+  font-size: 0.99rem;
+  color: #5f5e7c;
+  line-height: 1.58;
+  word-break: break-word;
+}
+
+/* Style for textarea when editing */
+.mentor-about-textarea {
+  width: 100%;
+  min-height: 120px;
+  font-size: 1rem;
+  color: #23294b;
+  border-radius: 10px;
+  border: 1px solid #dad9e4;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: vertical;
+  margin-bottom: 10px;
+}
+
+.mentor-info-save-btn {
+  align-self: flex-end;
+  background: #6566ff;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 20px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-top: 8px;
+}

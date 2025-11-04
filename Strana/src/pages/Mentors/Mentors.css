@@ -1,0 +1,272 @@
+.sidebar-mentors {
+  width: 250px;
+  height: 100vh;
+  background-color: #ffffff79;
+  display: flex;
+  flex-direction: column;
+  
+  border-right: 1px solid #f1f1f1;
+  padding: 20px 10px;
+}
+.sidebar-header-mentors {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.collapse-btn-mentors {
+  background-color: #eef0ff;
+  border: none;
+  border-radius: 50%;
+  padding: 6px;
+  cursor: pointer;
+  color: #6a63ff;
+  display: flex;
+  top: 35px;
+  right: 35px;
+  position: relative;
+
+}
+.sidebar-menu-mentors  {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 40px;
+  margin-bottom: 400px;
+}
+/*           -mentors           */
+.menu-item-mentors {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  color: #5f6b7d;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.menu-item-mentors:hover {
+  background-color: #f2f4ff;
+}
+
+.menu-item-mentors.active {
+  background-color: #f2f4ff;
+  color: #6a63ff;
+  font-weight: 500;
+  border-right: 3px solid #6a63ff;
+}
+
+.menu-icon-mentors {
+  font-size: 18px;
+}
+.sidebar-footer-mentors {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6a63ff;
+  cursor: pointer;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+
+.sidebar-footer-mentors:hover {
+  opacity: 0.8;
+}
+/* src  bar */
+.header-container-mentors {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f0f0f3;
+  padding: 36px 32px;
+}
+
+.search-wrapper-mentors {
+  flex: 1;
+}
+
+.search-input-mentors {
+  width: 420px;
+  padding: 10px 30px;
+  border-radius: 22px;
+  border: none;
+  background: #fff;
+  font-size: 16px;
+  outline: none;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  margin-left: 100px;
+}
+
+.company-profile-mentors {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 150px;
+}
+
+.company-logo-mentors {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #ddd;
+}
+
+.company-text-mentors {
+  color: #626e89;
+  font-size: 16px;
+  font-weight: 500;
+}
+/* dddddddd */
+.Main-Container-mentors{
+  background-color: #f6f6fa;
+  display: flex;
+}
+.Mentor-Container-mentors{
+  width: 100%;
+  background-color: #f0f0f3;;
+  
+}
+/* pod */
+.dashboard-mentorS {
+  display: flex;
+  margin: 2rem;
+  gap: 2rem;
+  background: #f0f0f3;
+  min-height: 100vh;
+  font-family: Inter, Arial, sans-serif;
+}
+
+.mentor-list-mentorS {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.mentor-card-mentorS {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f9f9fb;
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px #ececec;
+}
+
+.mentor-img-mentorS {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-right: 1.2rem;
+  object-fit: cover;
+}
+
+.mentor-main-mentorS {
+  flex: 1;
+  min-width: 0;
+}
+
+.mentor-header-mentorS {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mentor-name-mentorS {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #21223d;
+}
+
+.linkedin-icon-mentorS {
+  width: 19px;
+  height: 19px;
+  object-fit: contain;
+  margin-left: 4px;
+  vertical-align: middle;
+}
+
+.mentor-rating-mentorS {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0.35rem 0;
+}
+
+.avg-rating-mentorS {
+  color: #888;
+  font-size: 0.94rem;
+  margin-left: 0.55rem;
+}
+
+.mentor-skills-mentorS {
+  font-size: 1.03rem;
+  margin: 0.1rem 0;
+  color: #1a133c;
+}
+
+.mentor-desc-mentorS {
+  color: #555;
+  font-size: 0.97rem;
+  margin-bottom: 0.6rem;
+  margin-top: 0.18rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.view-mentor-btn-mentorS {
+  background: #7b61ff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.5rem;
+  font-weight: 600;
+  margin-left: 1rem;
+  cursor: pointer;
+}
+
+.sidebar-mentorS {
+  flex: 1.1;
+  background: #f9f9fb;
+  border-radius: 16px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 2px 8px #ececec;
+  min-width: 240px;
+  height: fit-content;
+}
+
+.sidebar-title-mentorS {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.1rem;
+}
+
+.sidebar-label-mentorS {
+  font-size: 0.95rem;
+  color: #888;
+  margin-bottom: 1.2rem;
+}
+
+.sidebar-item-mentorS {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.05rem;
+  margin-bottom: 1rem;
+}
+
+.sidebar-number-mentorS {
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+.highlight-mentorS {
+  background: #7b61ff;
+  color: #fff;
+  border-radius: 10px;
+  padding: 0.75rem 1.1rem 0.75rem 0.75rem;
+  margin-top: 1.5rem;
+  font-size: 1.13rem;
+}

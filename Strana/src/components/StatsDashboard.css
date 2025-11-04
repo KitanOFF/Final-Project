@@ -1,0 +1,118 @@
+.performance-overview-row-StDash {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+
+.performance-statistics-card-StDash {
+  background: #fff;
+  border-radius: 22px;
+  box-shadow: 0 2px 14px rgba(66, 78, 146, 0.06);
+  padding: 30px 48px 38px 48px; 
+  width: 650px;                 
+  min-height: 295px;
+  overflow: visible;
+  flex-shrink: 0;
+  margin-left: 50px;
+}
+
+
+.statistics-title-StDash {
+  font-size: 1.34rem;
+  font-weight: 600;
+  color: #39465d;
+  margin-bottom: 8px;
+  letter-spacing: 0.73px;
+  text-transform: uppercase;
+}
+
+.statistics-subtitle-StDash {
+  color: #b0b6c7;
+  font-size: 1.14rem;
+  margin-bottom: 17px;
+}
+
+
+.statistics-chart-StDash {
+  width: 100%;
+  margin-bottom: 5px;
+  display: block;
+}
+
+.statistics-axis-line-StDash {
+  stroke: #eceffd;
+  stroke-width: 2;
+}
+
+.statistics-y-text-StDash {
+  fill: #c4c5d3;
+  font-size: 1.09rem;
+  font-weight: 500;
+  user-select: none;
+}
+
+.statistics-axis-labels-StDash {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.13rem;
+  color: #b0b6c7;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  margin: 0;
+  padding: 0 8px;
+  user-select: none;
+}
+
+
+.quick-overview-col-StDash {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;              
+  min-width: 190px;       
+  margin-left: 100px;
+}
+
+.overview-card-StDash {
+  background: #fff;
+  border-radius: 10px;   
+  padding: 15px 14px 13px 16px;  
+  box-shadow: 0 1.5px 6px rgba(110, 108, 208, 0.03);
+  font-size: 0.98rem;     
+  margin-bottom: 0;
+  color: #3b4153;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.overview-card-StDash:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2.2px 7px rgba(66, 78, 146, 0.07);  /* slightly smaller shadow */
+}
+
+.overview-card-StDash .overview-label-StDash {
+  color: #adb3c9;
+  font-size: 0.97rem;     /* was 1.05rem */
+  margin-bottom: 2px;
+}
+
+.overview-card-StDash .overview-value-StDash {
+  font-weight: 600;
+  color: #3b4153;
+  font-size: 1.2rem;      /* was 1.57rem */
+}
+
+.overview-card-StDash.highlight-StDash {
+  background: #6566ff;
+  color: #fff;
+  box-shadow: 0 3px 9px rgba(101, 102, 255, 0.13); /* softer shadow */
+  transform: translateY(-1px);
+}
+
+.overview-card-StDash.highlight-StDash .overview-label-StDash,
+.overview-card-StDash.highlight-StDash .overview-value-StDash {
+  color: #fff;
+}
+
