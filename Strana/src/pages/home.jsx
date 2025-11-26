@@ -1,17 +1,10 @@
 import './home.css'
 import Navbar from '../components/navbar'
 import Footer from '../components/Footer'
-
-//  import arrowlogo from '../assets/arrow-right.png';
-//  import logoOne from '../assets/logo-1.png'
-//  import logoTwo from '../assets/logo-2.png'
-//  import logoThree from '../assets/logo-3.png'
-//  import logoFour from '../assets/logo-4.png'
-//  import logoFive from '../assets/logo-5.png'
-// import Logos from '../assets/Logos.png'
-
+import { useNavigate } from "react-router-dom";
 
 function Home () {
+  const navigate = useNavigate();
     return (
         <div>
             <Navbar/>
@@ -26,11 +19,11 @@ function Home () {
                         to drive the success of the ventures they support.</h4>
                 </div>
                 <div className='Buttons'>
-                     <button className="ButtonStart">
+                     <button className="ButtonStart" onClick={() => navigate("/Signup")}>
                                     <img src="./arrow-right.png" alt="arrow" className="btn-icon" />
                                              Get Started
                                     </button>
-                                    <button className="btn-touch">Get in Touch</button>
+                                    <button className="btn-touch"  onClick={() => navigate("/Contacts")}>Get in Touch</button>
                                     
                 </div>
             </div>
@@ -106,15 +99,15 @@ function Home () {
           </div>
         </div>
       </article>
-        <div className='Sliki'>
-          <p className="title-main">
-          Every{" "}
-          <b>
-            <span className="blue-word">success</span>
-          </b>{" "}
-          is rewarded!
-        </p>
-        </div>
+    <div className="side-by-side-container-bottom">
+  
+  <div className="image-overlay-container-bottom">
+    <img src="borompick.png" alt="Large right visual" className="main-right-image-bottom"/>
+    
+  </div>
+</div>
+
+
         </div>
         <Footer/>
         </div>

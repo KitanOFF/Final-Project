@@ -1,28 +1,41 @@
-require('dotenv').config({ path: `${__dirname}/config.env` });
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const database = require('./dataBase/database');
-const { expressjwt: jwt } = require("express-jwt");
+const dotenv = require("dotenv");
+dotenv.config({ path: `${__dirname}/config.env` });
+
+const express = require("express");
+const cookieParser = require("cookie-parser");
 const cors = require("cors");
-const { handleChatRequest } = require('./handlers/aiContoler');
-const auth = require("./controller/authController")
-const job = require("./controller/jobController")
-const application = require("./controller/appController")
+const { expressjwt: jwt } = require("express-jwt");
 const multer = require("multer");
+const path = require("path");
+
+const db = require("./dataBase/database");
+
+const auth = require("./handlers/authHandler");
+const user = require("./handlers/userHandler");
+const job = require("./handlers/jobHandler");
+const application = require("./handlers/applicationHandler"); 
+const { handleChatRequest } = require("./handlers/aiContoler");
+
+console.log("handleChatRequest type:", typeof handleChatRequest);
+
+
+db.init();
 
 const app = express();
-app.use(cors());
+
+
+app.use(cors({
+  origin: "http://localhost:5173",
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+  allowedHeaders: ["Content-Type", "Authorization"]
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());;
+app.use(cookieParser());
 
-const path = require('path');
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.static("public"));
-app.use("/uploads", express.static(path.join(__dirname, "public", "uploads")));
-app.use("/uploads", express.static("public"))
+app.set("view engine", "ejs");
 
-database.connectToDataBase();
 
 const multerStorage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -33,8 +46,6 @@ const multerStorage = multer.diskStorage({
     cb(null, `user-${Date.now()}.${ext}`);
   },
 });
-
-
 const multerFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image")) {
     cb(null, true);
@@ -42,12 +53,11 @@ const multerFilter = (req, file, cb) => {
     cb(new Error("Not an image!"), false);
   }
 };
-
-
 const upload = multer({
   storage: multerStorage,
   fileFilter: multerFilter,
 });
+
 
 app.use(
   jwt({
@@ -64,40 +74,46 @@ app.use(
     path: ["/api/v1/signup", "/api/v1/login","/api/v1/ai"],
   })
 );
+app.post("/api/v1/signup", upload.single("photo"), auth.signup);
+app.post("/api/v1/login", auth.login);
+app.use("/uploads", express.static(path.join(__dirname, "public/uploads")));
 
-app.post('/api/v1/signup', upload.single("photo"), auth.signup);
-app.patch("/api/v1/uploadphoto/:id", upload.single("photo"), auth.uploadUserPhoto, auth.update);
-
-
-const PORT = 1000; // Or from process.env.PORT
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
-
-
-app.post('/api/v1/login',auth.login );
 app.post('/api/v1/ai', handleChatRequest);
 
+app.patch("/api/v1/uploadphoto/:id", user.uploadUserPhoto, user.update);
 app.get("/api/v1/users", auth.getUsers);
-app.get("/api/v1/user/:id", auth.getUser);
+app.get("/api/v1/user/:id", auth.getOneUser); 
 app.delete("/api/v1/user/:id", auth.deleteUser);
-app.patch("/api/v1/updateUser/:id", auth.update)
+app.patch("/api/v1/updateUser/:id", auth.update);
 
-app.post("/api/v1/job", job.createJob);
-app.get("/api/v1/jobs", job.getAllJobs);
-app.get("/api/v1/jobs/:id", job.getOneJob);
-app.delete("/api/v1/job/:id", job.deleteJob);
-app.patch("/api/v1/job/:id", job.updateJob);
-app.get("/api/v1/jobs-startup", job.getAllStartupJobs)
-
-app.post("/api/v1/application", application.create);
-app.get("/api/v1/applications", application.getAllApps);
-app.get("/api/v1/application/:id", application.getApp); 
-app.delete("/api/v1/application/:id", application.deleteApp);
-app.patch("/api/v1/application/:id", application.updateApp);
-app.get("/api/v1/application/mentor/:id", application.applicationByMentor);
-app.get("/api/v1/offers/mentor", application.getMentorOffersJob);
-app.get("/api/v1/applications/startup", application.getApplicationsForStartup);
+app.get('/api/v1/jobs', job.getAllJobs);
+app.get('/api/v1/jobs/:id', job.getOneJob);
+app.post('/api/v1/job', job.create);
+app.patch('/api/v1/job/:id', job.updateJob);
+app.delete('/api/v1/job/:id', job.deleteJob);
+app.get('/api/v1/jobsstartup', job.getAllJobsForStartup);
+app.post('/api/v1/jobs/chat', job.chatAboutJobs);
 
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}`);
+app.get('/api/v1/application', application.getAllApps);
+app.get("/api/v1/application/mentors-startup", application.getApplicationsForStartup);
+app.get('/api/v1/application/:id', user.getUser);
+// nad ova raboti s eoke 
+app.post('/api/v1/application', application.create);
+app.get('/api/v1/application/mentor/:mentorId', application.applicationByMentor);
+app.patch('/api/v1/application/:id', application.updateApp);
+app.delete('/api/v1/application/:id', application.deleteApp);
+app.get("/api/v1/mentor/offers", application.getMentorOffersJob);
+app.get("/api/v1/startup/applications", application.getApplicationsForStartup);
+
+
+// davat problem ako e od komentirana a gi imat sive vo USER  
+// app.get("/api/v1/getMentors", user.getMentors);//davat problem ako e od komentirana 
+// app.get("/api/v1/startup/top-mentors", application.topMentors);
+// app.get("/api/v1/startup/mentordetailsforstartup/:mentorId", user.getMentorDetailsForStartup);
+
+
+app.listen(process.env.PORT, (err) => {
+  if (err) return console.log(err.message, "Server cannot start");
+  console.log(`Server running on http://localhost:${process.env.PORT}`);
 });

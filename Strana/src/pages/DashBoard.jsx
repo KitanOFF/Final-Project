@@ -5,7 +5,7 @@ import StatisticsCard from "../components/StatisticsCard";
 import { useNavigate } from "react-router-dom";
 import Logout from "../components/LogOut";
 import AiButton from "../components/AiButton/AiButton";
-
+import AssignJobsStartUp from "../components/AssignJobsStartUp/AssignJobsStartUp";
 
 const jobsData = [
   { id: 1, title: "Revenue per rate", status: "DONE" },
@@ -107,7 +107,7 @@ function DashBoard() {
     <div className="dashboard-content">
   <div className="jobs-section card-box">
     {/* Assigned Jobs */}
-    <div className="assigned-jobs">
+    {/* <div className="assigned-jobs">
       <h2>Assigned Jobs</h2>
       <div className="tabs">
         {["ALL", "DONE", "REJECTED", "IN PROGRESS"].map((tab) => (
@@ -132,7 +132,8 @@ function DashBoard() {
   ))}
 </div>
 
-    </div>
+    </div> */}
+    <AssignJobsStartUp/>
     {/* jobssssssssss */}
   </div>
   <div className="mentors-section">

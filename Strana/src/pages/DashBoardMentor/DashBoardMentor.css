@@ -69,7 +69,14 @@
   font-size: 15px;
   margin-bottom: 10px;
 }
-
+.company-photo-mentor{
+  height: 40px;
+  width: 40px;
+}
+.company-meta-mentor{
+  display: flex;
+  flex-direction: column;
+}
 .sidebar-footer-mentor:hover {
   opacity: 0.8;
 }

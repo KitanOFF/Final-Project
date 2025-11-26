@@ -1,6 +1,7 @@
-const applicationSchema =require("../model/application")
+const Application = require("../model/application");
 const Job = require("../model/jobModel");
-const User = require("../model/model")
+const User = require("../model/model");
+const mongoose = require("mongoose");
 
 exports.create = async (req, res) => {
   try {

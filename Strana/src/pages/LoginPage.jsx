@@ -20,22 +20,22 @@ const Login = () => {
       });
       const data = await res.json();
       
-      // ✅ SUCCESSFUL LOGIN LOGIC
+      
       if (res.ok && data.token) {
         localStorage.setItem("token", data.token);
 
-        // Decode the token to find the user's role
+      
         try {
           const decoded = jwtDecode(data.token);
-          const userRole = decoded.role; // ⬅️ ASSUMING your JWT payload includes the 'role' field
-
-          // Route the user based on their role
+          const userRole = decoded.role; 
+          console.log("Decoded token:", decoded);
+          console.log("User role:", userRole);
           if (userRole === "mentor") {
-            navigate("/DashBoardMentor"); // Mentor dashboard route
+            navigate("/DashBoardMentor"); 
           } else if (userRole === "startup") {
-            navigate("/DashBoard"); // Startup dashboard route
+            navigate("/DashBoard"); 
           } else {
-            // Fallback for an unknown role
+            
             setError("Login successful, but user role is unknown.");
             navigate("/"); 
           }
@@ -46,7 +46,7 @@ const Login = () => {
         }
 
       } else {
-        // ❌ LOGIN FAILED
+       
         setError(data.message || "Login error");
       }
     } catch (err) {

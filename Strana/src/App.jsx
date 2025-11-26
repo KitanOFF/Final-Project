@@ -16,7 +16,7 @@ import JobsMentor from './pages/JobsMentor/JobsMentor'
 import Mentors from './pages/Mentors/Mentors'
 import ViewMentor from './pages/ViewMentor/ViewMentor'
 import AIChatPanel from './components/AI/Ai'
-
+import MentorInfo from './pages/Mentor/MentorInfo.jsx'  
 function App() {
 
   return (
@@ -40,6 +40,7 @@ function App() {
           <Route path='/Mentors' element={<Mentors/>}/>{/* */}
           <Route path='/ViewMentor' element={<ViewMentor/>}/> {/* Sredeno  */}
           <Route path='/Ai' element={<AIChatPanel/>}/>
+          <Route path='/MentorInfo' element={<MentorInfo/>}/>
         </Routes>
       </div>
       {/* <Footer /> */}

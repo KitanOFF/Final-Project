@@ -1,0 +1,198 @@
+.mentor-profile-row {
+  display: flex;
+  gap: 38px;
+  margin: 0 80px;
+  justify-content: flex-start;
+}
+
+.mentor-profile-card {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 14px rgba(66,78,146,0.06);
+  width: 233px;
+  height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  padding-top: 20px;
+}
+
+.mentor-profile-name {
+  font-size: 23px;
+  color: #626e89;
+  font-weight: 600;
+  margin-bottom: 2px;
+  display: flex;
+  align-items: center;
+}
+
+.mentor-profile-title {
+  color: #6a63ff;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 18px;
+}
+
+.mentor-profile-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+}
+
+.mentor-profile-contact-row {
+  color: #8d97b5;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.mentor-info-card {
+  flex: 1;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 14px rgba(66,78,146,0.06);
+  padding: 30px 38px 32px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.mentor-info-header-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.mentor-info-title {
+  color: #6a63ff;
+  font-size: 17px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.mentor-info-skills {
+  color: #222;
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.mentor-info-btn {
+  background: #6a63ff;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 25px;
+  cursor: pointer;
+  margin-left: 18px;
+  margin-top: 2px;
+  transition: background 0.18s;
+}
+
+.mentor-info-btn:hover {
+  background: #5242bb;
+}
+
+.mentor-info-text {
+  color: #787b8f;
+  font-size: 14px;
+  line-height: 1.67;
+  margin-top: 8px;
+  margin-bottom: 7px;
+}
+
+.dashboard-main-mentors{
+  display: flex;
+  flex-direction: column;
+}
+
+.jobs-startup-mentors{
+  display: flex;
+  gap: 100px;
+}
+
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 999;
+}
+
+/* Modal box */
+.modalWrapper {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1001;
+}
+
+.modal {
+  background: white;
+  padding: 28px;
+  border-radius: 12px;
+  width: 420px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.15);
+}
+
+.closeBtn {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  font-size: 26px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #444;
+  transition: 0.2s ease;
+}
+
+.modal h3 {
+  margin: 0 0 8px 0;
+}
+
+.input,
+.textarea {
+  width: 380px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+.textarea {
+  height: 100px;
+  resize: none;
+}
+
+.modalActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+}
+
+.modal h3 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}

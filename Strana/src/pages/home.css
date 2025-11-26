@@ -38,6 +38,7 @@ margin: 100px auto;
   margin: 64px 0;
 }
 
+
 .logos-top img, .logos-bot img {
   max-height: 100px; 
   object-fit: contain;
@@ -108,4 +109,17 @@ margin: 100px auto;
     position: absolute;
     right: 0;
     top: -320px;
+}
+.main-presentation-bottom {
+  min-height: 100vh;
+  background: #f6f9fc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+}
+/* ddddd */
+.main-right-image-bottom{
+  margin-top: 50px;
+  margin-left: 250px;
 }
