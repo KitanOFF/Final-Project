@@ -1,7 +1,7 @@
 const Application = require("../model/application");
 const Job = require("../model/jobModel");
 const User = require("../model/model");
-const mongoose = require("mongoose");
+const mongoose = require("mongoose")
 
 exports.create = async (req, res) => {
   try {
@@ -27,7 +27,7 @@ exports.create = async (req, res) => {
       }
       const companyId = job.companyId;
 
-      const existApp = await applicationSchema.findOne({
+      const existApp = await Application.findOne({
         mentorId: userId,
         jobId,
         companyId,
@@ -41,7 +41,7 @@ exports.create = async (req, res) => {
         });
       }
 
-      newApp = await applicationSchema.create({
+      newApp = await Application.create({
         mentorId: userId,
         jobId,
         companyId,
@@ -75,7 +75,7 @@ exports.create = async (req, res) => {
           message: "Please enter your Job Id!",
         });
       }
-      const existApp = await applicationSchema.findOne({
+      const existApp = await Application.findOne({
         mentorId,
         companyId: userId,
         jobId: newJob,
@@ -89,7 +89,7 @@ exports.create = async (req, res) => {
         });
       }
 
-      newApp = await applicationSchema.create({
+      newApp = await Application.create({
         mentorId,
         companyId: userId,
         jobId: newJob,
@@ -116,7 +116,7 @@ exports.create = async (req, res) => {
 }
   exports.getAllApps = async (req, res) => {
     try {
-      const allApps = await applicationSchema.find()
+      const allApps = await Application.find()
         .populate("jobId")
         .populate("mentorId")
         .populate("companyId");
@@ -135,7 +135,7 @@ exports.create = async (req, res) => {
 
   exports.getApp = async (req, res) => {
     try {
-      const app = await applicationSchema.findById(req.params.id)
+      const app = await Application.findById(req.params.id)
         .populate("jobId")
         .populate("mentorId")
         .populate("companyId");
@@ -159,43 +159,91 @@ exports.create = async (req, res) => {
     }
   };
 
-  exports.updateApp = async (req, res) => {
-    try {
-      const acceptedStatus = req.body;
-      const newStatus =
-        acceptedStatus === "in progress" ||
-        acceptedStatus === "done" ||
-        acceptedStatus === "rejected"
-          ? "accepted"
-          : "pending";
+ exports.updateApp = async (req, res) => {
+  try {
+    const { acceptedStatus, status } = req.body;
 
-      const app = await applicationSchema.findByIdAndUpdate(
-        req.params.id,
-        {
-          acceptedStatus,
-          status: newStatus,
-        },
-        {
-          new: true,
-          runValidators: true,
-        }
-      ).populate("jobId mentorId companyId");
-
-      res.status(200).json({
-        status: "success",
-        data: app,
-      });
-    } catch (err) {
-      res.status(500).json({
+    const existingApp = await Application.findById(req.params.id);
+    if (!existingApp) {
+      return res.status(404).json({
         status: "fail",
-        message: err.message,
+        message: "Application not found",
       });
     }
-  };
+    let newStatus = status;
+    
+    if (!newStatus && acceptedStatus) {
+      if (acceptedStatus === "in progress" || 
+          acceptedStatus === "done" || 
+          acceptedStatus === "rejected") {
+        if (existingApp.applicationType === "companyToMentor" && acceptedStatus === "in progress") {
+          newStatus = "assigned";
+        } else {
+          newStatus = existingApp.status;
+        }
+      } else {
+        newStatus = existingApp.status;
+      }
+    } else if (!newStatus) {
+      newStatus = existingApp.status;
+    }
+
+    const updateData = {};
+    
+    if (acceptedStatus !== undefined) {
+      updateData.acceptedStatus = acceptedStatus;
+    }
+    
+    if (newStatus) {
+      updateData.status = newStatus;
+    }
+
+    if (updateData.status && !["pending", "assigned"].includes(updateData.status)) {
+      return res.status(400).json({
+        status: "fail",
+        message: `Invalid status value. Must be one of: pending, assigned`,
+      });
+    }
+
+    if (updateData.acceptedStatus && !["done", "rejected", "in progress"].includes(updateData.acceptedStatus)) {
+      return res.status(400).json({
+        status: "fail",
+        message: `Invalid acceptedStatus value. Must be one of: done, rejected, in progress`,
+      });
+    }
+
+    const app = await Application.findByIdAndUpdate(
+      req.params.id,
+      updateData,
+      {
+        new: true,
+        runValidators: true,
+      }
+    ).populate("jobId mentorId companyId");
+
+    if (!app) {
+      return res.status(404).json({
+        status: "fail",
+        message: "Application not found after update",
+      });
+    }
+
+    res.status(200).json({
+      status: "success",
+      data: app,
+    });
+  } catch (err) {
+    console.error("Update app error:", err);
+    res.status(500).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};
 
   exports.deleteApp = async (req, res) => {
     try {
-      const app = await applicationSchema.findByIdAndDelete(req.params.id);
+      const app = await Application.findByIdAndDelete(req.params.id);
       res.status(200).json({
         status: "Success",
         data: app,
@@ -208,35 +256,57 @@ exports.create = async (req, res) => {
     }
   };
 
-  exports.applicationByMentor = async (req, res) => {
-    try {
-      const { id: userId, userRole } = req.auth;
-      const mentorId = req.params;
-      console.log(req.auth);
+exports.applicationByMentor = async (req, res) => {
+  try {
+    const { id: userId, role } = req.auth;
+    const mentorId = req.params.mentorId || req.params.id;
 
-      if (userRole === "mentor") {
-        if (userId !== mentorId) {
-          return res.status(400).json({
-            status: "fail",
-            message: "Only mentors can view their applications",
-          });
-        }
-      }
-
-      const applications = await applicationSchema.find({ mentorId })
-        .populate("jobId", "title description")
-        .populate("companyId", "name email");
-      res.status(200).json({
-        status: "success",
-        data: applications,
-      });
-    } catch (err) {
-      res.status(500).json({
+    if (!userId || !mentorId) {
+      return res.status(400).json({
         status: "fail",
-        message: err.message,
+        message: "Missing userId or mentorId in request",
       });
     }
-  };
+
+    if (!mongoose.Types.ObjectId.isValid(mentorId)) {
+      return res.status(400).json({
+        status: "fail",
+        message: "Invalid mentor ID",
+      });
+    }
+    if (role !== "mentor") {
+      return res.status(403).json({
+        status: "fail",
+        message: "Only mentors can access their applications",
+      });
+    }
+
+    if (userId !== mentorId) {
+      return res.status(403).json({
+        status: "fail",
+        message: "Mentors can only view their own applications!",
+      });
+    }
+
+    const applications = await Application.find({
+      mentorId: new mongoose.Types.ObjectId(mentorId),
+    })
+      .populate("jobId", "title description")
+      .populate("companyId", "name email");
+
+    res.status(200).json({
+      status: "success",
+      results: applications.length,
+      data: applications,
+    });
+  } catch (err) {
+    console.error("❌ Error in applicationByMentor:", err);
+    res.status(500).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};
 
   exports.getMentorOffersJob = async (req, res) => {
     try {
@@ -247,7 +317,7 @@ exports.create = async (req, res) => {
           message: "Mentor Id not found!",
         });
       }
-      const offers = await applicationSchema.find({
+      const offers = await Application.find({
         mentorId,
         applicationType: "companyToMentor",
         status: "pending",
@@ -269,7 +339,7 @@ exports.create = async (req, res) => {
   exports.getApplicationsForStartup = async (req, res) => {
     try {
       const startupId = req.auth.id;
-      const userRole = req.auth.userRole;
+      const userRole = req.auth.role;
 
       if (userRole !== "startup") {
         return res.status(400).json({
@@ -278,7 +348,7 @@ exports.create = async (req, res) => {
         });
       }
 
-      const apps = await applicationSchema.find({ companyId: startupId })
+      const apps = await Application.find({ companyId: startupId })
         .populate("jobId", "title description")
         .populate("mentorId", "name email photo");
       res.status(200).json({
@@ -292,3 +362,60 @@ exports.create = async (req, res) => {
       });
     }
   };
+
+  exports.getMentorDetailsForStartup = async (req, res) => {
+  try {
+    const startupId = req.auth.id;
+    const mentorId = req.params.id;
+    const mentor = await User.findById(mentorId).select(
+      "name skills desc email phone"
+    );
+    if (!mentor)
+      return res
+        .status(404)
+        .json({ status: "fail", message: "Mentor not found" });
+    const applications = await Application.find({
+      mentorId,
+      companyId: startupId,
+    }).populate("jobId");
+    const assignedJobs = applications.filter(
+      (app) => app.status === "accepted"
+    );
+    const pendingJobs = applications.filter((app) => app.status === "pending");
+    const doneJobs = applications.filter(
+      (app) => app.acceptedStatus === "done"
+    );
+    const inProgressJobs = applications.filter(
+      (app) => app.acceptedStatus === "in progress"
+    );
+    const rejectedJobs = applications.filter(
+      (app) => app.acceptedStatus === "rejected"
+    );
+    const mapJob = (arr) =>
+      arr.map((app) => ({
+        applicationId: app._id,
+        _id: app.jobId._id,
+        title: app.jobId.title,
+        status: app.status,
+        acceptedStatus: app.acceptedStatus,
+        applicationType: app.applicationType,
+      }));
+    res.status(200).json({
+      status: "success",
+      data: {
+        mentor,
+        assignedJobs: mapJob(assignedJobs),
+        pendingJobs: mapJob(pendingJobs),
+        doneJobs: mapJob(doneJobs),
+        inProgressJobs: mapJob(inProgressJobs),
+        rejectedJobs: mapJob(rejectedJobs),
+      },
+    });
+  } catch (err) {
+    console.error("Error fetching mentor details:", err);
+    res.status(500).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};

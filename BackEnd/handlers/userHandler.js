@@ -109,3 +109,17 @@ exports.update = async (req, res) => {
     });
   }
 };
+exports.getMentors = async (req, res) => {
+  try {
+    const mentors = await User.find({ role: "mentor" });
+    res.status(200).json({
+      status: "success",
+      data: mentors, 
+    });
+  } catch (err) {
+    res.status(500).json({
+      status: "fail",
+      message: err.message,
+    });
+  }
+};

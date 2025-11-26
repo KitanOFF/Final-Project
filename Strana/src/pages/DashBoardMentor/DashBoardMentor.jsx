@@ -11,74 +11,98 @@ import PendingJobsMentor from "../../components/pendingJobs.jsx/PendingJobsMento
 
 
 function DashBoardMentor() {
+const navigate = useNavigate();
   const [error, setError] = useState("");
-  const [user, setUser] = useState(null);
-  const [userData, setUserData] = useState(null);
+  const [user, setUser] = useState(null);      
+  const [userData, setUserData] = useState(null); 
   const [loading, setLoading] = useState(true);
-  // const [jobs, setJobs] = useState(jobsData);
-    const token = localStorage.getItem("token");
-    const [filter, setFilter] = useState("All");
-    const [applications, setApplications] = useState([]);
-    const navigate = useNavigate();
-   
-// dddddddddddd
-  const BASE_URL = "http://localhost:1000";
-     useEffect(() => {
-    const token = localStorage.getItem("token");
-    if (token) {
-      try {
-        const decodedUser = jwtDecode(token);
-        setUser(decodedUser);
-      } catch (e) {
-        console.error("Token decoding failed:", e);
-        localStorage.removeItem("token");
-        navigate("/login");
-      }
-    } else {
-      navigate("/login");
-    }
-  }, [navigate]);
+  const [filter, setFilter] = useState("ALL");
 
-  // Fetch user data
+const BASE_URL = "http://localhost:1000";
+
+  const filteredJobs =
+    filter === "ALL"
+      ? jobsData
+      : jobsData.filter((job) => {
+          if (filter === "DONE") return job.status === "DONE";
+          if (filter === "REJECTED") return job.status === "REJECTED";
+          if (filter === "IN PROGRESS") return job.status === "IN PROGRESS";
+          return true;
+        });
+
+  // ЕДЕН ефект за сè: token + fetch user
   useEffect(() => {
-    if (!user?.id) return;
-
-    const fetchUser = async () => {
+    const run = async () => {
       try {
         setLoading(true);
+
         const token = localStorage.getItem("token");
-        const res = await axios.get(`${BASE_URL}/api/v1/user/${user.id}`, {
+        if (!token) {
+          // ако нема token -> на loginv
+          navigate("/loginv");
+          return;
+        }
+
+        let decoded;
+        try {
+          decoded = jwtDecode(token);
+          console.log("Decoded token in Dashboard:", decoded);
+        } catch (e) {
+          console.error("Token decoding failed:", e);
+          localStorage.removeItem("token");
+          navigate("/loginv");
+          return;
+        }
+
+        const userId = decoded.id || decoded._id;
+        if (!userId) {
+          console.error("No id in token");
+          localStorage.removeItem("token");
+          navigate("/loginv");
+          return;
+        }
+
+        setUser({
+          id: userId,
+          name: decoded.name,
+          email: decoded.email,
+          role: decoded.role,
+          photo: decoded.photo,
+        });
+
+        // Fetch од backend
+        const res = await axios.get(`${BASE_URL}/api/v1/user/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
+
         if (res.data && res.data.user) {
           setUserData(res.data.user);
+          setError("");
         } else {
           setError("User not found");
         }
       } catch (err) {
         console.error("Error fetching user:", err);
         setError("Failed to fetch user");
+
+        if (err.response && err.response.status === 401) {
+          localStorage.removeItem("token");
+          navigate("/loginv");
+        }
       } finally {
         setLoading(false);
       }
     };
 
-    fetchUser();
-  }, [user]);
-
-  // useEffect(() => {
-  //   setFilteredJobs(
-  //     filter === "ALL"
-  //       ? jobs
-  //       : jobs.filter((job) => job.status === filter)
-  //   );
-  // }, [filter, jobs]);
+    run();
+  }, [navigate]);
 
   if (loading) {
     return <div className="loading-message">Authenticating user...</div>;
   }
+
 
   return (
     <div className="Main-Container-mentor">

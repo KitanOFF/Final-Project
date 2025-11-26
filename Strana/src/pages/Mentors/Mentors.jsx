@@ -3,7 +3,10 @@ import Logout from "../../components/LogOut";
 import { FaStar } from "react-icons/fa"
 import AiButton from "../../components/AiButton/AiButton";
 import { useNavigate } from "react-router-dom";
-import MentorsCards from "../../components/mentorsCards/mentorsCards";
+import MentorsCards from "../../components/mentorsCards/MentorsCards";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { jwtDecode } from "jwt-decode";
 
 const overviewData = {
   totalMentors: 12,
@@ -15,7 +18,89 @@ const overviewData = {
 
 
 function Mentors(){
+
     const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const [user, setUser] = useState(null);      
+  const [userData, setUserData] = useState(null); 
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState("ALL");
+
+const BASE_URL = "http://localhost:1000";
+
+  
+
+  useEffect(() => {
+    const run = async () => {
+      try {
+        setLoading(true);
+
+        const token = localStorage.getItem("token");
+        if (!token) {
+       
+          navigate("/loginv");
+          return;
+        }
+
+        let decoded;
+        try {
+          decoded = jwtDecode(token);
+          console.log("Decoded token in Dashboard:", decoded);
+        } catch (e) {
+          console.error("Token decoding failed:", e);
+          localStorage.removeItem("token");
+          navigate("/loginv");
+          return;
+        }
+
+        const userId = decoded.id || decoded._id;
+        if (!userId) {
+          console.error("No id in token");
+          localStorage.removeItem("token");
+          navigate("/loginv");
+          return;
+        }
+
+        setUser({
+          id: userId,
+          name: decoded.name,
+          email: decoded.email,
+          role: decoded.role,
+          photo: decoded.photo,
+        });
+
+        // Fetch од backend
+        const res = await axios.get(`${BASE_URL}/api/v1/user/${userId}`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (res.data && res.data.user) {
+          setUserData(res.data.user);
+          setError("");
+        } else {
+          setError("User not found");
+        }
+      } catch (err) {
+        console.error("Error fetching user:", err);
+        setError("Failed to fetch user");
+
+        if (err.response && err.response.status === 401) {
+          localStorage.removeItem("token");
+          navigate("/loginv");
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    run();
+  }, [navigate]);
+
+  if (loading) {
+    return <div className="loading-message">Authenticating user...</div>;
+  }
     return(
         <div className="Main-Container-mentors">
  <div className="sidebar-mentors">
@@ -54,10 +139,23 @@ function Mentors(){
       <div className="search-wrapper-mentors">
         <input  type="text" className="search-input-mentors" placeholder="Search Mentors..." />
       </div>
-      <div className="company-profile-mentors">
-        <img src="/Logo-Dash.jpg" alt="Logo" className="company-logo" />
-        <span className="company-text-mentors">TechWave Innovations</span>
-      </div>
+      <div className="company-profile-mentor">
+            <img
+              src={
+                userData?.photo
+                  ? `${BASE_URL}/uploads/${userData.photo}` 
+                  : "maya.png"
+              }
+              alt="User"
+              className="company-photo-mentor"
+            />
+            <div className="company-meta-mentor">
+              <span className="company-text-mentor">{userData?.name || "Guest"}</span>
+              <span className="user-role">
+                {userData?.role ? `${userData.role}` : "No role"} 
+              </span>
+            </div>
+          </div>
     </div>
     {/* pod */}
     <div className="dashboard-mentorS">

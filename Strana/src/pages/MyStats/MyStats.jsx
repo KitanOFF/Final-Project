@@ -116,7 +116,7 @@ const BASE_URL = "http://localhost:1000";
             <img
               src={
                 userData?.photo
-                  ? `${BASE_URL}/uploads/${userData.photo}` // <-- FIXED template literal
+                  ? `${BASE_URL}/uploads/${userData.photo}` 
                   : "maya.png"
               }
               alt="User"
@@ -125,7 +125,7 @@ const BASE_URL = "http://localhost:1000";
             <div className="company-meta-mentor">
               <span className="company-text-mentor">{userData?.name || "Guest"}</span>
               <span className="user-role">
-                {userData?.role ? `${userData.role}` : "No role"} {/* <-- FIXED template literal */}
+                {userData?.role ? `${userData.role}` : "No role"} 
               </span>
             </div>
           </div>

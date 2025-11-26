@@ -108,7 +108,8 @@ const BASE_URL = "http://localhost:1000";
           <Logout />
         </div>
         </div>
-        <div className="header-container-mentor">
+        <div className="Mentor-Container-mystats">
+          <div className="header-container-mentor">
           <div className="search-wrapper-mentor">
             <input
               type="text"
@@ -134,8 +135,11 @@ const BASE_URL = "http://localhost:1000";
             </div>
           </div>
         </div>
+        {/* nad serc bar */}
+        <StartupJobs />
+        </div>
         {error && <div className="error-message">{error}</div>}
-        <StartupJobs/>
+        
         </div>
 
     )

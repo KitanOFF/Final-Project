@@ -86,14 +86,19 @@ app.get("/api/v1/user/:id", auth.getOneUser);
 app.delete("/api/v1/user/:id", auth.deleteUser);
 app.patch("/api/v1/updateUser/:id", auth.update);
 
-app.get('/api/v1/jobs', job.getAllJobs);
-app.get('/api/v1/jobs/:id', job.getOneJob);
-app.post('/api/v1/job', job.create);
-app.patch('/api/v1/job/:id', job.updateJob);
-app.delete('/api/v1/job/:id', job.deleteJob);
-app.get('/api/v1/jobsstartup', job.getAllJobsForStartup);
-app.post('/api/v1/jobs/chat', job.chatAboutJobs);
-
+// app.get('/api/v1/jobs', job.getAllJobs);
+// app.get('/api/v1/jobs/:id', job.getOneJob);
+// app.post('/api/v1/job', job.create);
+// app.patch('/api/v1/job/:id', job.updateJob);
+// app.delete('/api/v1/job/:id', job.deleteJob);
+// app.get('/api/v1/jobsstartup', job.getAllJobsForStartup);
+// app.post('/api/v1/jobs/chat', job.chatAboutJobs);
+app.post("/api/v1/job", job.createJob);
+app.get("/api/v1/jobs", job.getAllJobs);
+app.get("/api/v1/jobs/:id", job.getOneJob);
+app.delete("/api/v1/job/:id", job.deleteJob);
+app.patch("/api/v1/job/:id", job.updateJob);
+app.get("/api/v1/jobs-startup", job.getAllStartupJobs)
 
 app.get('/api/v1/application', application.getAllApps);
 app.get("/api/v1/application/mentors-startup", application.getApplicationsForStartup);
@@ -106,10 +111,10 @@ app.delete('/api/v1/application/:id', application.deleteApp);
 app.get("/api/v1/mentor/offers", application.getMentorOffersJob);
 app.get("/api/v1/startup/applications", application.getApplicationsForStartup);
 
-
 // davat problem ako e od komentirana a gi imat sive vo USER  
-// app.get("/api/v1/getMentors", user.getMentors);//davat problem ako e od komentirana 
+app.get("/api/v1/getMentors", user.getMentors);//davat problem ako e od komentirana 
 // app.get("/api/v1/startup/top-mentors", application.topMentors);
+
 // app.get("/api/v1/startup/mentordetailsforstartup/:mentorId", user.getMentorDetailsForStartup);
 
 
