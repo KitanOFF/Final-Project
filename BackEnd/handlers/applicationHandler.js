@@ -274,6 +274,7 @@ exports.applicationByMentor = async (req, res) => {
         message: "Invalid mentor ID",
       });
     }
+
     if (role !== "mentor") {
       return res.status(403).json({
         status: "fail",
@@ -291,8 +292,7 @@ exports.applicationByMentor = async (req, res) => {
     const applications = await Application.find({
       mentorId: new mongoose.Types.ObjectId(mentorId),
     })
-      .populate("jobId", "title description")
-      .populate("companyId", "name email");
+      .populate("jobId", "title description"); 
 
     res.status(200).json({
       status: "success",

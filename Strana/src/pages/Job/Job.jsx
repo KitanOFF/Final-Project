@@ -208,17 +208,17 @@ export default function StartupJobs() {
       </div>
 
       <div className="sidebar-menu-mystats">
-        <div className="menu-item-mystats" onClick={() => navigate("/DashBoardMentor")}>
+        <div className="menu-item-mystats" onClick={() => navigate("/DashBoard")}>
           <img src="4koc.png" className="menu-icon-mystats" />
           <p>Dashboard</p>
         </div>
 
-        <div className="menu-item-mystats active" onClick={() => navigate("/MyStats")}>
+        <div className="menu-item-mystats active" onClick={() => navigate("/Mentors")}>
           <img src="Frame 4 (1).PNG" className="menu-icon-mystats" />
-          <p>My Stats</p>
+          <p>Mentors</p>
         </div>
 
-        <div className="menu-item-mystats" onClick={() => navigate("/OpenJobs")}>
+        <div className="menu-item-mystats" onClick={() => navigate("/job")}>
           <img src="disc.png" className="menu-icon-mystats" />
           <p>Jobs</p>
         </div>
@@ -232,80 +232,64 @@ export default function StartupJobs() {
       </div>
     </div>
     <div className='Mentor-Container-mystats'> 
-      <div className="jobs-header">
-        <h2>Your Startup Jobs</h2>
+      <div className="Mentor-Container-mystats-JoBs">
+  <div className="jobs-header-JoBs">
+    <h2>Your Startup Jobs</h2>
+  </div>
+
+  <div className="jobs-grid-JoBs">
+    {offers.map((offer) => (
+      <div className="job-card-feed-JoBs" key={offer._id}>
+        
+        <div className="job-logo-JoBs">
+          <h3 className="job-company-JoBs">{offer.companyId.name}</h3>
+        </div>
+
+        <div className="job-offer-JoBs">{offer.title}</div>
+
+        <div className="job-desc-JoBs">{offer.description}</div>
+
+        <button
+          className="view-more-JoBs"
+          onClick={() => {
+            setSelectedJob(offer);
+            setShowJobModal(true);
+          }}
+        >
+          View More
+        </button>
       </div>
-      <div className="jobs-grid">
-        {offers.map((offer) => {
-          return(
-          <div className="job-card-feed" key={offer._id}>
-            <div className="job-logo">{offer.title}
-            <h3 className="job-company">{offer.companyId.name}</h3>
-            </div>
-            <div className="job-offer">{offer.status}</div>
-            <div className="job-desc">
-              {offer.description}
-            </div>
-            <button className="view-more" onClick={() => {
-                setSelectedJob(offer);
-                setShowJobModal(true);
-              }}>View More</button>
-          </div>
-          )
-        }
+    ))}
+  </div>
+
+  {/* MODAL */}
+  {showJobModal && selectedJob && (
+    <div className="modalBackdrop-JoBs">
+      <div className="modal-JoBs">
+        <span
+          className="closeX-JoBs"
+          onClick={() => {
+            setShowJobModal(false);
+            setSelectedJob(null);
+          }}
+        >
+          &times;
+        </span>
+
+        <h3>{selectedJob.title}</h3>
+        <p className="jobDescFull-JoBs">{selectedJob.description}</p>
+        <strong>Skills required:</strong>{" "}
+        {selectedJob.skillsRequired?.join(", ") || "Not specified"}
+
+        {user?.role === "mentor" && (
+          <button>Apply for Job</button>
         )}
       </div>
-      {showJobModal && selectedJob && (
-  <div className="modalBackdrop">
-    <div className="modal">
-      <span
-        className="closeX"
-        onClick={() => setShowJobModal(false) && setSelectedJob(null)} 
-      >
-        &times;
-      </span>
-      <h3>{selectedJob.title}</h3>
-      <p className="jobDescFull">{selectedJob.description}</p>
-      <strong>Skills required:</strong>{" "}
-      {selectedJob.skillsRequired?.join(", ") || "Not specified"}
-      <div>
-              {user?.role === "mentor" && (
-                <button
-                  onClick={async () => {
-                    try {
-                      const res = await fetch(
-                        "http://localhost:1000/api/v1/application",
-                        {
-                          method: "POST",
-                          headers: {
-                            "Content-Type": "application/json",
-                            Authorization: `Bearer ${token}`,
-                          },
-                          body: JSON.stringify({
-                            jobId: selectedJob._id,
-                          }),
-                        }
-                      );
-
-                      const data = await res.json();
-                      if (res.ok) {
-                        alert("You have successfully applied for this job!");
-                        setSelectedJob(null);
-                      } else {
-                        alert(data.message || "Failed to apply for job");
-                      }
-                    } catch (err) {
-                      console.log("Apply job error:", err);
-                    }
-                  }}
-                >
-                  Apply for Job
-                </button>
-              )}
-            </div>
     </div>
-  </div>
-)}
+  )}
+</div>
+
+
 </div>
     </div>
   );

@@ -3,20 +3,20 @@ const mongoose = require("mongoose");
 
 const applicationSchema = new mongoose.Schema({
   jobId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Job',
-    required: true
-  },
-  mentorId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Mentor',
-    required: true
-  },
-  companyId: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Company',
-    required: true
-  },
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required: true,
+    },
+    mentorId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required: true,
+    },
+    companyId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        required: true,
+    },
   applicationType: {
     type: String,
     enum: ['mentorToCompany', 'companyToMentor'],

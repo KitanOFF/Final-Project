@@ -119,39 +119,43 @@ export default function StartupJobs() {
         <strong>Skills required:</strong>{" "}
         {selectedJob.skillsRequired?.join(", ") || "Not specified"}
         <div style={{ marginTop: "24px" }}>
-          {user?.role === "mentor" && (
-            <button
-              className="modalApplyBtn-JoBs"
-              onClick={async () => {
-                try {
-                  const res = await fetch(
-                    "http://localhost:10000/api/v1/application",
-                    {
-                      method: "POST",
-                      headers: {
-                        "Content-Type": "application/json",
-                        Authorization: `Bearer ${token}`,
-                      },
-                      body: JSON.stringify({
-                        jobId: selectedJob._id,
-                      }),
-                    }
-                  );
-                  const data = await res.json();
-                  if (res.ok) {
-                    alert("You have successfully applied for this job!");
-                    setSelectedJob(null);
-                  } else {
-                    alert(data.message || "Failed to apply for job");
-                  }
-                } catch (err) {
-                  console.log("Apply job error:", err);
-                }
-              }}
-            >
-              Apply
-            </button>
-          )}
+         {user?.role === "mentor" && (
+  <button
+    className="modalApplyBtn-JoBs"
+    onClick={async () => {
+      try {
+        const res = await fetch("http://localhost:1000/api/v1/application", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify({
+            jobId: selectedJob._id,
+            mentorId: user.id,                         
+            companyId: selectedJob.companyId._id,     
+            applicationType: "mentorToCompany",        
+          }),
+        });
+
+        const data = await res.json();
+        console.log("apply response:", data);
+
+        if (res.ok) {
+          alert("You have successfully applied for this job!");
+          setSelectedJob(null);
+          setShowJobModal(false);
+        } else {
+          alert(data.message || "Failed to apply for job");
+        }
+      } catch (err) {
+        console.log("Apply job error:", err);
+      }
+    }}
+  >
+    Apply
+  </button>
+)}
         </div>
       </div>
     </div>

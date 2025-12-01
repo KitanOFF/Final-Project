@@ -20,16 +20,7 @@ const navigate = useNavigate();
 
 const BASE_URL = "http://localhost:1000";
 
-  const filteredJobs =
-    filter === "ALL"
-      ? jobsData
-      : jobsData.filter((job) => {
-          if (filter === "DONE") return job.status === "DONE";
-          if (filter === "REJECTED") return job.status === "REJECTED";
-          if (filter === "IN PROGRESS") return job.status === "IN PROGRESS";
-          return true;
-        });
-
+  
   // ЕДЕН ефект за сè: token + fetch user
   useEffect(() => {
     const run = async () => {

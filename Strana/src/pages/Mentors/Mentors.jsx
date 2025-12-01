@@ -124,7 +124,7 @@ const BASE_URL = "http://localhost:1000";
           <p>Mentors</p>
         </div>
 
-        <div className="menu-item-mentors" onClick={() => navigate("/Jobs")}>
+        <div className="menu-item-mentors" onClick={() => navigate("/job")}>
           <img src="disc.png" className="menu-icon-mentors" />
           <p>Jobs</p>
         </div>
