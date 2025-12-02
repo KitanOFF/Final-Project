@@ -91,14 +91,14 @@ const BASE_URL = "http://localhost:1000";
             <p>Dashboard</p>
           </div>
           <div
-            className="menu-item-mentor active"
+            className="menu-item-mentor "
             onClick={() => navigate("/MyStats")}
           >
             <img src="Frame 4 (1).PNG" className="menu-icon-mentor" />
             <p>My Stats</p>
           </div>
           <div
-            className="menu-item-mentor"
+            className="menu-item-mentor active"
             onClick={() => navigate("/OpenJobs")}
           >
             <img src="disc.png" className="menu-icon-mentor" />

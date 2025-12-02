@@ -213,12 +213,12 @@ export default function StartupJobs() {
           <p>Dashboard</p>
         </div>
 
-        <div className="menu-item-mystats active" onClick={() => navigate("/Mentors")}>
+        <div className="menu-item-mystats " onClick={() => navigate("/Mentors")}>
           <img src="Frame 4 (1).PNG" className="menu-icon-mystats" />
           <p>Mentors</p>
         </div>
 
-        <div className="menu-item-mystats" onClick={() => navigate("/job")}>
+        <div className="menu-item-mystats active" onClick={() => navigate("/job")}>
           <img src="disc.png" className="menu-icon-mystats" />
           <p>Jobs</p>
         </div>

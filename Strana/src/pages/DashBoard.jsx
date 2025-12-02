@@ -158,12 +158,12 @@ function DashBoard() {
           </div>
 
           <div className="sidebar-menu">
-            <div className="menu-item" onClick={() => navigate("/dashboard")}>
+            <div className="menu-item active" onClick={() => navigate("/dashboard")}>
               <img src="profile.svg" className="menu-icon" />
               <p>Dashboard</p>
             </div>
 
-            <div className="menu-item active" onClick={() => navigate("/mentors")}>
+            <div className="menu-item" onClick={() => navigate("/mentors")}>
               <img src="4koc.png" className="menu-icon" />
               <p>Mentors</p>
             </div>
