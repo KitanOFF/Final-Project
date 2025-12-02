@@ -23,6 +23,13 @@ export default function Signup() {
 
   const navigate = useNavigate();
 
+  const isLongEnough = password.length >= 8;
+const hasNumberOrSymbol = /[\d\W]/.test(password);
+const doesNotContainEmail = !email || !password.toLowerCase().includes(email.toLowerCase());
+const isStrong =
+  isLongEnough && hasNumberOrSymbol && doesNotContainEmail;
+
+
   function handleProfilePicChange(e) {
     const file = e.target.files[0];
     if (file) {
@@ -137,11 +144,19 @@ export default function Signup() {
                 className='input-password-signup'
               />
               <ul className='password-rules-signup'>
-                <li>Password Strength: Weak</li>
-                <li>Cannot contain your name or email address</li>
-                <li>At least 8 characters</li>
-                <li>Contains a number or symbol</li>
-              </ul>
+              <li className={isStrong ? 'valid' : 'invalid'}>
+              Password Strength: {isStrong ? 'Strong' : 'Weak'}
+              </li>
+              <li className={doesNotContainEmail ? 'valid' : 'invalid'}>
+                Cannot contain your name or email address
+              </li>
+              <li className={isLongEnough ? 'valid' : 'invalid'}>
+              At least 8 characters
+              </li>
+              <li className={hasNumberOrSymbol ? 'valid' : 'invalid'}>
+               Contains a number or symbol
+              </li>
+                </ul>
               <button
                 type='button'
                 className='continue-btn-signup'

@@ -181,9 +181,9 @@ span{
   opacity: 1;
 }
 
-/* .continue-btn-signup:hover {
+.continue-btn-signup:hover {
   background: #8d97fa;
-} */
+}
 
 .login-link-signup {
   margin-top: 28px;
@@ -348,6 +348,18 @@ body {
 .terms-note a {
   color: #7367f0;
   text-decoration: underline;
+}
+
+.password-rules-signup li {
+  color: #9ca3af; 
+}
+
+.password-rules-signup li.valid {
+  color: #16a34a; 
+}
+
+.password-rules-signup li.invalid {
+  color: #ef4444; 
 }
 
 .logo-upload-circle {
